@@ -10,12 +10,18 @@
 #  description :text
 #  created_at  :datetime
 #  updated_at  :datetime
+#  user_id     :integer
 #
 
 require 'action_view'
 
 class Cat < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
+
+  belongs_to :owner,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :User
 
   CAT_COLORS = %w(black white orange brown)
 
@@ -30,6 +36,7 @@ class Cat < ActiveRecord::Base
     :color,
     :name,
     :sex,
+    :user_id,
     presence: true
   )
 
