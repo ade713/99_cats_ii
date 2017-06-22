@@ -1,0 +1,10 @@
+<% action = (customer ? session_url : users_url) %>
+
+<form action="<%= action%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+  <label for="username">Username</label>
+    <input type="text" name="user[user_name]">
+  <label for="password">Password</label>
+    <input type="password" name="user[password]">
+    <input type="submit">
+</form>
